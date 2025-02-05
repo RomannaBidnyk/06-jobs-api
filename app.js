@@ -12,6 +12,7 @@ const connectDB = require("./db/connect");
 
 const authRouter = require("./routes/auth");
 const jobsRouter = require("./routes/jobs");
+const productsRouter = require("./routes/products");
 
 const authenticatedUser = require("./middleware/authentication");
 
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/jobs", authenticatedUser, jobsRouter);
+app.use("/api/v1/products", authenticatedUser, productsRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
